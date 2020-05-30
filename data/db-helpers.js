@@ -43,7 +43,7 @@ function addTask(task) {
 //GET TASK WITH PROJECT
 
 function getProjectTask() {
-    return db('project as p')
-        .join('task as t')
-        .select('p.Name as Project_Name', 'p.Description as Project_Description', "p.Completed as Project_Complete", "t.Description as Task_Description", "t.Notes as Task Notes", "t.Completed as Task_Completed")
+    return db('task as t')
+        .join('project as p', 't.Project_ID', 'p.id')
+        .select('t.id', "t.Description as Task_Description", "t.Notes as Task Notes", "t.Completed as Task_Completed", "p.Name as Project_Name", 'p.Description as Project_Description', "p.Completed as Project_Complete", )
 }
