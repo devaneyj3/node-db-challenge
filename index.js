@@ -1,6 +1,6 @@
 const express = require('express');
 
-const projectRoutes = require('./data/projectRoutes');
+const projectRoutes = require('./api/projectRoutes');
 const server = express(); 
 
 server.use(express.json());

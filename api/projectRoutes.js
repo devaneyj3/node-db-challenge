@@ -69,5 +69,20 @@ router.get('/project_tasks', async (req, res) => {
         error.dbError()
     }
 })
+
+// STRECTH 
+
+//GET PROJECT BY ID
+router.get('/project/:id', async (req, res) => {
+    const { id } = req.params;
+    const getProjectsAndTasks = await db.getProjectID(id)
+    console.log(getProjectsAndTasks)
+    try {
+        res.status(200).send(getProjectsAndTasks
+        )
+    } catch {
+        error.dbError()
+    }
+})
 module.exports = router;
 
