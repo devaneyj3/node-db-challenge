@@ -17,39 +17,54 @@ router.post('/resource', async (req, res) => {
     }
 })
 
-router.get('/recipes/:id/shoppingList', async (req, res) => {
-    const { id } = req.params;
-    const shoppingList = await db.getShoppingList(id);
+//GET RESOURCES
+router.get('/resource', async (req, res) => {
+    const getResourcesList = await db.getResources();
     try {
-        res.status(200).send(shoppingList)
-
+        res.status(200).send(getResourcesList)
     } catch {
         error.dbError()
     }
 })
 
-router.get('/recipes/:id/instructions', async (req, res) => {
-    const { id } = req.params;
-    const instructions = await db.getInstructions(id);
-    console.log(instructions)
+//POST A RESOURCE
+router.post('/resource', async (req, res) => {
+    await db.addResource(req.body)
     try {
-        res.status(200).send(instructions)
-
-    } catch  {
-        error.dbError()
-    }
-})
-router.get('/ingredients/:id/recipes', async (req, res) => {
-    const { id } = req.params;
-    const recipesOfIngredient = await db.getRecipesOfIngredient(id);
-    console.log(recipesOfIngredient)
-    try {
-        res.status(200).send(recipesOfIngredient)
-
+        res.status(200).send(req.body)
     } catch {
         error.dbError()
     }
 })
 
+//GET RESOURCES
+router.get('/resource', async (req, res) => {
+    const getResourcesList = await db.getResources();
+    try {
+        res.status(200).send(getResourcesList)
+    } catch {
+        error.dbError()
+    }
+})
+
+//POST A PROJECT
+router.post('/project', async (req, res) => {
+    await db.addProject(req.body)
+    try {
+        res.status(200).send(req.body)
+    } catch {
+        error.dbError()
+    }
+})
+
+//GET PROJECTS
+router.get('/project', async (req, res) => {
+    const getProjectList = await db.getProject();
+    try {
+        res.status(200).send(getProjectList)
+    } catch {
+        error.dbError()
+    }
+})
 module.exports = router;
 

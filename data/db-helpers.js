@@ -3,45 +3,31 @@ const db = require('./db-config');
 
 module.exports = {
     addResource,
-    getShoppingList,
-    getInstructions,
-    getRecipesOfIngredient
+    getResources,
+    addProject,
+    getProject
 }
 
-//GET recipes
+//add a resource
 
 function addResource(resource) {
     return db('Resource').insert({'Name': resource.Name, 'Description': resource.Description})
 }
 
-// GET ingrendeints for a recipe
+// GET Resources
 
-function getShoppingList(recipe_id) {
-    return db('ingredients as i')
-        .join('recipes as r', 'r.id', 'ri.recipe_id')
-        .join('recipes-ingredients as ri', 'i.id', 'ri.ingredient_id')
-        .where('r.id', recipe_id)
-        .select('i.name', 'i.quantity')
+function getResources() {
+    return db('Resource')
 }
 
-//GET instructions for a recipe
+//add a project
 
-function getInstructions(recipe_id) {
-    return db('steps as s')
-        .join('recipes-steps as rs', 'rs.step_id', 's.id')
-        .join('recipes as r', 'r.id', 'rs.recipe_id')
-        .where('r.id', recipe_id)
-        .select('s.instructions')
+function addProject(project) {
+    return db('project').insert({"Name": project.Name, "Description": project.Description, "Completed": project.Completed})
 }
 
-//GET recipes that use a single ingredient
+//GET Project
 
-function getRecipesOfIngredient(id) {
-    return db('ingredients as i')
-        .join('recipes-ingredients as ri', 'i.id', 'ri.ingredient_id')
-        .join('recipes as r', 'r.id', 'ri.recipe_id')
-        .where('i.id', id)
-        .select('r.name')
-
-
+function getProject() {
+    return db('project')
 }
