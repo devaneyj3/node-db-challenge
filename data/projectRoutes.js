@@ -58,10 +58,13 @@ router.post('/task', async (req, res) => {
 })
 
 //GET A TASK WITH PROJECT NAME AND DESCRIPTION
-router.get('/project', async (req, res) => {
-    const getProjectList = await db.getProject();
+router.get('/project_tasks', async (req, res) => {
+    const getProjectsAndTasks = await db.getProjectTask
+        ();
+    console.log(getProjectsAndTasks)
     try {
-        res.status(200).send(getProjectList)
+        res.status(200).send(getProjectsAndTasks
+)
     } catch {
         error.dbError()
     }
