@@ -1,11 +1,11 @@
 const express = require('express');
 
-// const blogRoutes = require('./blogRoutes');
+const projectRoutes = require('./data/projectRoutes');
 const server = express(); 
 
 server.use(express.json());
 
-// server.use('/api/url', urlRoutes);
+server.use('/api/', projectRoutes);
 
 server.get('/', (req, res) => {
     res.status(200).send('The App is working');
