@@ -40,11 +40,19 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 - [ ] Explain the difference between `Relational Databases` and `SQL`.
 
+SQL is the language you use to interact with a relational database.
+
 - [ ] Why do tables need a `primary key`?
+
+Tables need a primary key that can auto increment the id when you add data and the primary key identifies the record so that it is easily access with API calls on the backend and frontend.
 
 - [ ] What is the name given to a table column that references the primary key on another table.
 
+The name of that column is a foreign key that means that two tables have a relationship to another and the other table has an extra data that the original table needs
+
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
+
+A many to many needs an intermediary table to keep the tables normalized so they don't have duplicate data. This makes it so that table A can have multiples of table B, by conecting through a foreign key on the intermediary table.
 
 ## Minimum Viable Product
 
